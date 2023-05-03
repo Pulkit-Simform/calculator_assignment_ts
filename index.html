@@ -1,13 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator Practical</title>
+  <link href="/public/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="icon"
+    href="data:image/png;base64,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"
+    type="image/png">
+</head>
+
+<body class="p-1">
+  <!-- This is whole class container  -->
+  <div class="container-fluid">
+    <!-- Header Part for some spacing -->
+    <div class="w-100 h-100 bg-dark text-justify mt-4 p-4">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+          <h1 class="text-white">Scientific Calculator</h1>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+    <!-- Header Parts Ends here -->
+
+    <!-- Main Section -->
+    <div class="w-100 h-auto bootstrap-section p-2 flex">
+      <div class="row mt-2 mb-4">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 d-flex justify-content-center p-4">
+          <div class="switch d-none">
+            <button class="btn btn-success btn-lg" id="showButton">Show Calculator</button>
+          </div>
+          <!-- Here Will be layout of calculator -->
+          <div class="container-fluid border border-light rounded bg-light switchTo">
+            <!-- Inner Container -->
+            <!-- Upper Part -->
+            <div class="row mt-3">
+              <div class="col-md-6 text-left d-flex justify-content-start">
+                <h4 class="text-secondary text-200 text-nowrap font-weight-bold align-self-center">Calculator</h4>
+              </div>
+              <div class="col-md-1 align-items-center">
+              </div>
+              <div class="col-md-5 d-flex justify-content-end">
+                <button class="btn btn-secondary btn-small btn-block font-weight-bold m-2" id="hideButton">-</button>
+                <button class="btn btn-danger btn-small btn-block font-weight-bold m-2" id="cancelButton">x</button>
+              </div>
+            </div>
+            <hr />
+            <!-- display Part-->
+            <div class="displayShow">
+              <!-- Display Show Part -->
+
+              <div class="row">
+                <div class="col-md-12 h-75 mt-3 mb-3 w-100 text-right">
+                  <span class="history-text font-weight-bold text-secondary">
+                  </span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 h-75 mt-3 mb-3 w-100">
+                  <form>
+                    <div class="form-group">
+                      <input class="form-control text-right font-weight-bold display-1 p-4" id="displayStr" type="text"
+                        value="0" disabled />
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- All Button Section Start Here -->
+              <!-- First Section -->
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-start">
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="square">x<sup>2</sup></button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="raiseTo">x<sup>y</sup></button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="sineFunction">SIN</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="cosineFunction">COS</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1 " id="tangentFunction">TAN</button>
+
+                </div>
+              </div>
+
+              <!-- Second Section -->
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-start">
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="root">√</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="raiseToTen">10<sup>x</sup></button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="log">LOG</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="exponential">e</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1 " id="modulo">%</button>
+                </div>
+              </div>
+
+              <!-- Third Section -->
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-start">
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="absolute">|x|</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="ce">CE</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="c">C</button>
+                  <button class="btn btn-outline-danger btn-lg btn-block m-1 text-white" id="clear"> ⬅️ </button>
+                  <button class="btn btn-outline-info btn-lg btn-block m-1 " id="division">/</button>
+                </div>
+              </div>
+
+              <!-- Fourth Section -->
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-start">
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="pi">π</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="seven">7</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="eight">8</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="nine">9</button>
+                  <button class="btn btn-outline-info btn-lg btn-block m-1 " id="multiply">*</button>
+                </div>
+              </div>
+
+              <!-- Fifth Section -->
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-start">
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="factorial">n!</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="four">4</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="five">5</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="six">6</button>
+                  <button class="btn btn-outline-info btn-lg btn-block m-1 " id="subtraction">-</button>
+                </div>
+              </div>
+
+
+              <!-- Sixth Section -->
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-start">
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="plus_minus">±</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="one">1</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="two">2</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="three">3</button>
+                  <button class="btn btn-outline-info btn-lg btn-block m-1 " id="addition">+</button>
+                </div>
+              </div>
+
+
+
+              <!-- Seventh Section -->
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-start">
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="left_parentheses">(</button>
+                  <button class="btn btn-outline-dark btn-lg btn-block m-1" id="right_parentheses">)</button>
+                  <button class="btn btn-dark btn-lg btn-block m-1" id="zero">0</button>
+                  <button class="btn btn-outline-secondary btn-lg btn-block m-1" id="dot">.</button>
+                  <button class="btn btn-outline-primary btn-lg btn-block m-1 " id="equal"> = </button>
+                </div>
+              </div>
+
+              <div class="row mb-4"></div>
+              <hr class="w-50 p-1 bg-danger" />
+              <!-- Display Show Part End -->
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+
+    </div>
+
+    <!-- Container-fluid div tag ends here -->
+  </div>
+  <!-- The container End over here -->
+
+
+  <script type="module" src="/src/main.ts"></script>
+
+  <!-- Bootstrap Script tag -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Calculator Assignment</title>
+</head>
+
+<body>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html> -->

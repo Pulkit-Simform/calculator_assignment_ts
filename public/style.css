@@ -95,3 +95,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+.bootstrap-section{
+  background-color: rgb(151, 151, 151);
+}
+
+.blink_me {
+  animation: blinker 1s linear;
+  animation-iteration-count: 3;
+}
+
+@keyframes blinker {
+  50% {
+      opacity: 0;
+  }
+}
